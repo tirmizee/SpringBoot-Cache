@@ -5,3 +5,5 @@
 - Redis
 
 - hazelcast
+
+- Infinispan
