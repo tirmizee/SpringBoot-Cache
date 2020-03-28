@@ -1,1 +1,5 @@
 # SpringBoot-Caching
+
+- Ehcache
+
+ -Redis
