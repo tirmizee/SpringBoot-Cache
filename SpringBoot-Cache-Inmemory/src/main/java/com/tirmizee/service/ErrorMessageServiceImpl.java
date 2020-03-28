@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class ErrorMessageServiceImpl implements ErrorMessageService {
 	}
 
 	@Override
-	@Cacheable(value = "errormessage01")
+	@Cacheable(value = "errormessage01", key = "#code")
 	public ErrorMessage getCacheByCode(String code) {
 		return getByCode(code);
 	}
@@ -60,6 +61,15 @@ public class ErrorMessageServiceImpl implements ErrorMessageService {
 		message.setCode(code);
 		message.setStatus(status);
 		return findByErrorMessage(message);
+	}
+
+	@Override
+	@CacheEvict(value = "errormessage01", key = "#code")   
+	public void deleteByCode(String code) {
+		ErrorMessage message = getByCode(code);
+		if (message != null) {
+			errorMessageRepository.delete(message);
+		}
 	}
 	
 }

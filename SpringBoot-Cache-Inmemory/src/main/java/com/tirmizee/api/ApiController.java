@@ -22,7 +22,7 @@ public class ApiController {
 	@GetMapping(path = "/01/message/{code}")
 	public String getErrorMessage01(@PathVariable String code) {
 		LOGGER.info("search by code : {}", code);
-		return errorMessageService.getCacheByCode(code).toString();
+		return String.valueOf(errorMessageService.getCacheByCode(code));
 	}
 	
 	@GetMapping(path = "/02/message")
@@ -39,6 +39,13 @@ public class ApiController {
 	public String getErrorMessage03(ErrorDTO error) {
 		LOGGER.info("search by error : {}", error.toString());
 		return errorMessageService.findCacheByErrorMessage02(error.getId(), error.getCode(), error.getStatus()).toString();
+	}
+	
+	@GetMapping(path = "/delete/{code}")
+	public String deleteErrorMessage(@PathVariable String code) {
+		LOGGER.info("delete by error : {}", code);
+		errorMessageService.deleteByCode(code);
+		return "Success";
 	}
 	
 }

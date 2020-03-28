@@ -18,4 +18,6 @@ public interface ErrorMessageService {
 
 	List<ErrorMessage> findCacheByErrorMessage02(Long id, String code, String status);
 	
+	void deleteByCode(String code);
+	
 }
