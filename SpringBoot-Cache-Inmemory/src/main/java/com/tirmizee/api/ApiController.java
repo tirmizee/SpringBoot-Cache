@@ -43,9 +43,18 @@ public class ApiController {
 	
 	@GetMapping(path = "/delete/{code}")
 	public String deleteErrorMessage(@PathVariable String code) {
-		LOGGER.info("delete by error : {}", code);
+		LOGGER.info("delete by code : {}", code);
 		errorMessageService.deleteByCode(code);
 		return "Success";
+	}
+	
+	@GetMapping(path = "/update/{code}")
+	public String updateErrorMessage(@PathVariable String code, ErrorDTO error) {
+		LOGGER.info("update by code : {}", code);
+		ErrorMessage update = new ErrorMessage();
+		update.setMessage(error.getMessage());
+		update.setStatus(error.getStatus());
+		return String.valueOf(errorMessageService.updateByCode(code, update));
 	}
 	
 }

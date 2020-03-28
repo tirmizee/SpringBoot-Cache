@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -70,6 +71,15 @@ public class ErrorMessageServiceImpl implements ErrorMessageService {
 		if (message != null) {
 			errorMessageRepository.delete(message);
 		}
+	}
+	
+	@Override
+	@CachePut(value = "errormessage01", key = "#code")   
+	public ErrorMessage updateByCode(String code, ErrorMessage update) {
+		ErrorMessage message = getByCode(code);
+		message.setMessage(update.getMessage());
+		message.setStatus(update.getStatus());
+		return errorMessageRepository.save(message);
 	}
 	
 }
