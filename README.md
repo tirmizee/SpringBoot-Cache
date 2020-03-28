@@ -3,3 +3,5 @@
 - Ehcache
 
 - Redis
+
+- hazelcast
