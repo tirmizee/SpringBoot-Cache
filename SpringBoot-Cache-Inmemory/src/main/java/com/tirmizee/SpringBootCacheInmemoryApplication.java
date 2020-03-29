@@ -9,5 +9,5 @@ public class SpringBootCacheInmemoryApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootCacheInmemoryApplication.class, args);
 	}
-	
+
 }
