@@ -14,7 +14,7 @@ public class CustomCacheKey implements Serializable {
 
 	private final Object[] params;
 	private final int hashCode;
-	
+	 
 	public CustomCacheKey(Object...elements) {
 		Assert.notNull(elements, "null value");
 		params = new Object[elements.length];
