@@ -1,6 +1,8 @@
 
 ### Master-Slave Architecture
 
+![image](https://user-images.githubusercontent.com/15135199/77945616-1b5a3880-72eb-11ea-9b9c-fd136c8c986f.png)
+
 ### Configure Redis Master
 
 	port 6379
@@ -72,3 +74,13 @@
 	# maxmemory-policy volatile-lru
 	# maxmemory-samples 3
 	# client-output-buffer-limit <class> <hard limit> <soft limit> <soft seconds>
+	
+### Configure Redis Slave
+
+
+### Reference
+
+- https://www.digitalocean.com/community/tutorials/how-to-configure-a-redis-cluster-on-ubuntu-14-04
+- https://redis.io/commands
+- http://try.redis.io/
+- https://docs.uipath.com/orchestrator/v2018.4/docs/redis-sentinel-configuration
